@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modulus Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            touch-action: manipulation; /* Evita el zoom al tocar dos veces en móviles */
+        }
+        .btn {
+            transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out, box-shadow 0.2s ease-in-out;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            height: 100%;
+        }
+        .btn:active {
+            transform: scale(0.95);
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 flex items-center justify-center min-h-screen p-4">
+    <div class="w-full max-w-sm mx-auto bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-6">
+        
+        <!-- Header con Título y Botón de Menú -->
+        <div class="flex justify-between items-center mb-4">
+            <h1 id="mainTitle" class="text-2xl font-bold text-gray-800 dark:text-white"></h1>
+            <button id="menuButton" onclick="toggleSettingsMenu()" class="p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <svg class="w-6 h-6 text-gray-700 dark:text-gray-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Menú de Configuración (oculto por defecto) -->
+        <div id="settingsMenu" class="hidden mb-4 p-4 bg-gray-100 dark:bg-gray-700 rounded-lg">
+            <div class="flex items-center justify-center gap-2">
+                <label for="modulusInput" class="text-sm text-gray-600 dark:text-gray-400">Modulus:</label>
+                <input type="number" id="modulusInput" value="22" class="w-24 bg-white dark:bg-gray-800 text-gray-800 dark:text-white rounded-md p-1 text-center border border-gray-300 dark:border-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <button onclick="setModulus()" class="btn bg-indigo-500 hover:bg-indigo-600 text-white text-sm font-bold py-1 px-3 rounded-md">Set</button>
+            </div>
+        </div>
+
+        <!-- Pantalla de la calculadora -->
+        <div class="bg-gray-200 dark:bg-gray-700 rounded-lg p-4 mb-6 text-right">
+            <div id="display" class="text-4xl font-light text-gray-800 dark:text-white break-words" style="min-height: 48px;"></div>
+        </div>
+
+        <!-- Teclado de la calculadora -->
+        <div class="space-y-4">
+            <!-- Fila de Controles Superiores -->
+            <div class="grid grid-cols-2 gap-4">
+                <button onclick="clearDisplay()" class="btn bg-red-500 hover:bg-red-600 text-white text-2xl font-medium rounded-lg p-4 focus:outline-none focus:ring-2 focus:ring-red-400">AC</button>
+                <button onclick="deleteLast()" class="btn bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500 text-gray-800 dark:text-white text-2xl font-medium rounded-lg p-4 focus:outline-none focus:ring-2 focus:ring-gray-400">⌫</button>
+            </div>
+            
+            <!-- Cuadrícula de Números 3x3 -->
+            <div class="grid grid-cols-3 gap-4">
+                <button onclick="appendNumber('7')" class="btn bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-2xl font-medium rounded-lg p-4 aspect-square">7</button>
+                <button onclick="appendNumber('8')" class="btn bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-2xl font-medium rounded-lg p-4 aspect-square">8</button>
+                <button onclick="appendNumber('9')" class="btn bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-2xl font-medium rounded-lg p-4 aspect-square">9</button>
+                <button onclick="appendNumber('4')" class="btn bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-2xl font-medium rounded-lg p-4 aspect-square">4</button>
+                <button onclick="appendNumber('5')" class="btn bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-2xl font-medium rounded-lg p-4 aspect-square">5</button>
+                <button onclick="appendNumber('6')" class="btn bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-2xl font-medium rounded-lg p-4 aspect-square">6</button>
+                <button onclick="appendNumber('1')" class="btn bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-2xl font-medium rounded-lg p-4 aspect-square">1</button>
+                <button onclick="appendNumber('2')" class="btn bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-2xl font-medium rounded-lg p-4 aspect-square">2</button>
+                <button onclick="appendNumber('3')" class="btn bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-2xl font-medium rounded-lg p-4 aspect-square">3</button>
+                <button onclick="appendNumber('0')" class="btn col-span-3 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-2xl font-medium rounded-lg p-4">0</button>
+            </div>
+
+            <!-- Fila de Cálculo -->
+            <div>
+                <button onclick="calculateModulo()" class="btn w-full bg-blue-500 hover:bg-blue-600 text-white text-2xl font-medium rounded-lg p-4 focus:outline-none focus:ring-2 focus:ring-blue-400">MOD</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const display = document.getElementById('display');
+        const modulusInput = document.getElementById('modulusInput');
+        const mainTitle = document.getElementById('mainTitle');
+        const settingsMenu = document.getElementById('settingsMenu');
+        
+        let currentInput = ''; 
+        let calculationDone = false;
+        let modulus = 22; 
+
+        // Función para mostrar/ocultar el menú de configuración
+        function toggleSettingsMenu() {
+            settingsMenu.classList.toggle('hidden');
+        }
+
+        // Función para actualizar el título principal
+        function updateTitle() {
+            mainTitle.textContent = `Modulus ${modulus} Calculator`;
+        }
+
+        // Función para actualizar la pantalla
+        function updateDisplay() {
+            display.textContent = currentInput || ' ';
+        }
+
+        // Función para establecer un nuevo módulo
+        function setModulus() {
+            const newModulus = parseInt(modulusInput.value, 10);
+            if (!isNaN(newModulus) && newModulus > 0) {
+                modulus = newModulus;
+                updateTitle();
+                toggleSettingsMenu();
+            } else {
+                modulusInput.value = modulus;
+            }
+        }
+
+        // Función para añadir un número
+        function appendNumber(number) {
+            if (calculationDone) {
+                currentInput = ''; 
+                calculationDone = false;
+            }
+            if (currentInput === '0') {
+                currentInput = number;
+            } else {
+                currentInput += number;
+            }
+            updateDisplay();
+        }
+
+        // Función para limpiar la pantalla (AC)
+        function clearDisplay() {
+            currentInput = ''; 
+            calculationDone = false;
+            updateDisplay();
+        }
+
+        // Función para borrar el último dígito
+        function deleteLast() {
+            if (calculationDone) {
+                clearDisplay();
+                return;
+            }
+            if (currentInput.length > 1) {
+                currentInput = currentInput.slice(0, -1);
+            } else {
+                currentInput = ''; 
+            }
+            updateDisplay();
+        }
+        
+        // Función para calcular el módulo
+        function calculateModulo() {
+            try {
+                const number = BigInt(currentInput || '0');
+                const result = number % BigInt(modulus);
+                currentInput = result.toString();
+            } catch (error) {
+                currentInput = 'Error';
+            }
+            calculationDone = true;
+            updateDisplay();
+        }
+        
+        // Manejar la entrada del teclado físico
+        document.addEventListener('keydown', (event) => {
+            if (event.key >= '0' && event.key <= '9') {
+                appendNumber(event.key);
+            } else if (event.key === 'Backspace') {
+                deleteLast();
+            } else if (event.key === 'Escape' || event.key.toLowerCase() === 'c') {
+                clearDisplay();
+            } else if (event.key === 'Enter' || event.key === '=') {
+                event.preventDefault();
+                calculateModulo();
+            }
+        });
+
+        // Estado inicial al cargar la página
+        updateDisplay();
+        updateTitle();
+    </script>
+</body>
+</html>
