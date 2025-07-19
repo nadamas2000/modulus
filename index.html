@@ -39,7 +39,7 @@
         <div id="settingsMenu" class="hidden mb-4 p-4 bg-gray-100 dark:bg-gray-700 rounded-lg">
             <div class="flex items-center justify-center gap-2">
                 <label for="modulusInput" class="text-sm text-gray-600 dark:text-gray-400">Modulus:</label>
-                <input type="number" id="modulusInput" value="22" class="w-24 bg-white dark:bg-gray-800 text-gray-800 dark:text-white rounded-md p-1 text-center border border-gray-300 dark:border-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <input type="number" id="modulusInput" class="w-24 bg-white dark:bg-gray-800 text-gray-800 dark:text-white rounded-md p-1 text-center border border-gray-300 dark:border-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500">
                 <button onclick="setModulus()" class="btn bg-indigo-500 hover:bg-indigo-600 text-white text-sm font-bold py-1 px-3 rounded-md">Set</button>
             </div>
         </div>
@@ -86,7 +86,7 @@
         
         let currentInput = ''; 
         let calculationDone = false;
-        let modulus = 22; 
+        let modulus = 22; // Valor por defecto
 
         // Función para mostrar/ocultar el menú de configuración
         function toggleSettingsMenu() {
@@ -103,7 +103,7 @@
             display.textContent = currentInput || ' ';
         }
 
-        // Función para establecer un nuevo módulo
+        // Función para establecer un nuevo módulo desde el menú
         function setModulus() {
             const newModulus = parseInt(modulusInput.value, 10);
             if (!isNaN(newModulus) && newModulus > 0) {
@@ -177,9 +177,25 @@
             }
         });
 
-        // Estado inicial al cargar la página
-        updateDisplay();
-        updateTitle();
+        // Se ejecuta cuando la página ha cargado completamente
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const numParam = urlParams.get('num');
+
+            if (numParam) {
+                const parsedNum = parseInt(numParam, 10);
+                if (!isNaN(parsedNum) && parsedNum > 0) {
+                    modulus = parsedNum;
+                }
+            }
+            
+            // Sincroniza el valor del módulo con el campo de entrada
+            modulusInput.value = modulus;
+            
+            // Actualiza la UI inicial
+            updateDisplay();
+            updateTitle();
+        };
     </script>
 </body>
 </html>
