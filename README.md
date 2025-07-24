@@ -4,6 +4,8 @@ A simple and elegant web application to calculate the modulus (remainder of a di
 
 **Built specifically for the "Modulus of Love" card game.**
 
+<img src="assets/web-app.png" alt="UI" height="400">
+
 -----
 
 ## ✨ Features
@@ -21,9 +23,11 @@ A simple and elegant web application to calculate the modulus (remainder of a di
 
 ## 🚀 How to Use
 
-You can access the application directly through this link:
+You can access the application by clicking the link or scanning the QR code below:
 
-**[https://nadamas2000.github.io/modulus/](https://www.google.com/search?q=https://nadamas2000.github.io/modulus/)**
+| Direct Link | Scan with your mobile |
+| :--- | :--- |
+| **[https://nadamas2000.github.io/modulus/](https://nadamas2000.github.io/modulus/)** <br><br> *Click here to open the web app.* | <img src="assets/QR.png" alt="QR Code to access the web app" width="150"> |
 
 ### 1\. Setting the Modulus
 
