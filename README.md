@@ -74,3 +74,28 @@ You have two ways to define the number you want to divide by (the modulus):
   * **Vanilla JavaScript** for all the application logic.
   * **Google Fonts** for the typography (`Inter`).
 
+-----
+
+## 👨‍💻 Development & Setup
+
+This project uses a local Tailwind CSS build process to optimize performance. To set up the project for development:
+
+1.  **Prerequisites**: Make sure you have [Node.js](https://nodejs.org/) and npm installed.
+
+2.  **Install Dependencies**: Clone the repository and install the required packages.
+
+    ```bash
+    npm install
+    ```
+
+3.  **Run the Development Server**: This command will watch for changes in your CSS files and automatically rebuild the output file.
+
+    ```bash
+    npm run dev
+    ```
+
+4.  **Build for Production**: To generate the minified production-ready CSS file, run:
+
+    ```bash
+    npm run build
+    ```
