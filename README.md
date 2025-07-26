@@ -15,6 +15,7 @@ A simple and elegant web application to calculate the modulus (remainder of a di
       * Set a default modulus on page load via a URL parameter.
       * Change the modulus at any time through the in-app settings menu.
   * **Large Number Support:** Thanks to JavaScript's `BigInt`, the calculator can handle integers of any size without losing precision.
+  * **UI Scaling:** Adjust the size of the calculator for better visibility.
   * **Responsive & Modern Design:** A clean interface built with **Tailwind CSS** that adapts to any screen size and supports your system's dark mode.
   * **Keyboard Shortcuts:** Use the calculator efficiently with your physical keyboard.
   * **Intuitive Interface:** Buttons with visual feedback and a user experience optimized for touch devices.
@@ -29,9 +30,9 @@ You can access the application by clicking the link or scanning the QR code belo
 | :--- | :--- |
 | **[https://nadamas2000.github.io/modulus/](https://nadamas2000.github.io/modulus/)** <br><br> *Click here to open the web app.* | <img src="assets/QR.png" alt="QR Code to access the web app" width="150"> |
 
-### 1\. Setting the Modulus
+### 1\. Configuration
 
-You have two ways to define the number you want to divide by (the modulus):
+You can configure the calculator in two ways:
 
   * **Via the URL (on load):**
     Add the `?num=` parameter to the URL to set a specific modulus. By default, it is `22`.
@@ -45,8 +46,9 @@ You have two ways to define the number you want to divide by (the modulus):
   * **Via the Interface (at any time):**
 
     1.  Click the **menu button** (☰) in the top-right corner.
-    2.  Enter the new number in the "Modulus" input field.
-    3.  Press the **"Set"** button. The title will update to reflect the new modulus.
+    2.  In the menu, you can:
+          * **Set Modulus:** Enter the new number in the "Modulus" input and press **"Set"**. The title will update.
+          * **Set Scale:** Adjust the value in the "Scale" input to change the size of the calculator and press **"Set"**.
 
 ### 2\. Performing a Calculation
 
