@@ -115,3 +115,16 @@ window.onload = function() {
     updateDisplay();
     updateTitle();
 };
+
+// Función para aplicar la escala a la calculadora
+function setScale() {
+    const scaleValue = document.getElementById('scaleInput').value;
+    const calculatorContainer = document.getElementById('calculator-container');
+    
+    // Validamos que el contenedor y el valor existan
+    if (calculatorContainer && scaleValue) {
+        calculatorContainer.style.transform = `scale(${scaleValue})`;
+    }
+};
+
+document.addEventListener('DOMContentLoaded', setScale);

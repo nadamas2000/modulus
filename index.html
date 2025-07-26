@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modulus Calculator</title>
     <link rel="stylesheet" href="css/tailwind_out.css">
-    <link rel="stylesheet" href="css/styles.css">    
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico"> 
 
 </head>
 <body class="bg-gray-100 dark:bg-gray-900 flex items-center justify-center min-h-screen p-4">
-    <div class="w-full max-w-sm mx-auto bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-6">
+    <div id="calculator-container" class="w-full max-w-sm mx-auto bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-6 transition-transform duration-300" style="transform-origin: top center;">
         
         <!-- Header con Título y Botón de Menú -->
         <div class="flex justify-between items-center mb-4">
@@ -22,11 +23,16 @@
         </div>
 
         <!-- Menú de Configuración (oculto por defecto) -->
-        <div id="settingsMenu" class="hidden mb-4 p-4 bg-gray-100 dark:bg-gray-700 rounded-lg">
+        <div id="settingsMenu" class="hidden mb-4 p-4 bg-gray-100 dark:bg-gray-700 rounded-lg space-y-4">
             <div class="flex items-center justify-center gap-2">
                 <label for="modulusInput" class="text-sm text-gray-600 dark:text-gray-400">Modulus:</label>
                 <input type="number" id="modulusInput" class="w-24 bg-white dark:bg-gray-800 text-gray-800 dark:text-white rounded-md p-1 text-center border border-gray-300 dark:border-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500">
                 <button onclick="setModulus()" class="btn bg-indigo-500 hover:bg-indigo-600 text-white text-sm font-bold py-1 px-3 rounded-md">Set</button>
+            </div>
+            <div class="flex items-center justify-center gap-2">
+                <label for="scaleInput" class="text-sm text-gray-600 dark:text-gray-400">Scale:</label>
+                <input type="number" id="scaleInput" value="0.9" min="0.5" max="1.5" step="0.1" class="w-24 bg-white dark:bg-gray-800 text-gray-800 dark:text-white rounded-md p-1 text-center border border-gray-300 dark:border-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <button onclick="setScale()" class="btn bg-indigo-500 hover:bg-indigo-600 text-white text-sm font-bold py-1 px-3 rounded-md">Set</button>
             </div>
         </div>
 
