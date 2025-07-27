@@ -3,6 +3,10 @@ const modulusInput = document.getElementById('modulusInput');
 const mainTitle = document.getElementById('mainTitle');
 const settingsMenu = document.getElementById('settingsMenu');
 
+const MIN_MODULUS = 2;
+const MAX_MODULUS = 1000000;
+const MAX_DISPLAY_LENGTH = 14;
+
 let currentInput = ''; 
 let calculationDone = false;
 let modulus = 22; // Valor por defecto
@@ -25,7 +29,7 @@ function updateDisplay() {
 // Función para establecer un nuevo módulo desde el menú
 function setModulus() {
     const newModulus = parseInt(modulusInput.value, 10);
-    if (!isNaN(newModulus) && newModulus > 0) {
+    if (!isNaN(newModulus) && newModulus >= MIN_MODULUS && newModulus <= MAX_MODULUS) {
         modulus = newModulus;
         updateTitle();
         toggleSettingsMenu();
@@ -40,6 +44,11 @@ function appendNumber(number) {
         currentInput = ''; 
         calculationDone = false;
     }
+
+    if (currentInput.length >= MAX_DISPLAY_LENGTH) {
+        return; 
+    }
+
     if (currentInput === '0') {
         currentInput = number;
     } else {
@@ -103,13 +112,13 @@ window.onload = function() {
 
     if (numParam) {
         const parsedNum = parseInt(numParam, 10);
-        if (!isNaN(parsedNum) && parsedNum > 0) {
+        if (!isNaN(parsedNum) && parsedNum >= MIN_MODULUS && parsedNum <=MAX_MODULUS) {
             modulus = parsedNum;
         }
     }
     
     // Sincroniza el valor del módulo con el campo de entrada
-    modulusInput.value = modulus;
+    modulusInput.value = modulus;    
     
     // Actualiza la UI inicial
     updateDisplay();

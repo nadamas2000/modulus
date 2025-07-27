@@ -14,7 +14,10 @@ A simple and elegant web application to calculate the modulus (remainder of a di
   * **Configurable Modulus:**
       * Set a default modulus on page load via a URL parameter.
       * Change the modulus at any time through the in-app settings menu.
-  * **Large Number Support:** Thanks to JavaScript's `BigInt`, the calculator can handle integers of any size without losing precision.
+  * **Input Validation:**
+     * The modulus is restricted to whole numbers between **2** and **1,000,000** to ensure stable calculations.
+     * The on-screen number input is limited to **14 digits**.
+  * **Precision with BigInt:** Uses JavaScript's `BigInt` to perform calculations, preventing floating-point errors and ensuring precision.
   * **UI Scaling:** Adjust the size of the calculator for better visibility.
   * **Responsive & Modern Design:** A clean interface built with **Tailwind CSS** that adapts to any screen size and supports your system's dark mode.
   * **Keyboard Shortcuts:** Use the calculator efficiently with your physical keyboard.
@@ -47,7 +50,7 @@ You can configure the calculator in two ways:
 
     1.  Click the **menu button** (☰) in the top-right corner.
     2.  In the menu, you can:
-          * **Set Modulus:** Enter the new number in the "Modulus" input and press **"Set"**. The title will update.
+          * **Set Modulus:** Enter the new number (from 2 to 1,000,000) in the "Modulus" input and press **"Set"**. The title will update.
           * **Set Scale:** Adjust the value in the "Scale" input to change the size of the calculator and press **"Set"**.
 
 ### 2\. Performing a Calculation

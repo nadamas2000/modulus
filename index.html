@@ -25,13 +25,13 @@
         <!-- Menú de Configuración (oculto por defecto) -->
         <div id="settingsMenu" class="hidden mb-4 p-4 bg-gray-100 dark:bg-gray-700 rounded-lg space-y-4">
             <div class="flex items-center justify-center gap-2">
-                <label for="modulusInput" class="text-sm text-gray-600 dark:text-gray-400">Modulus:</label>
-                <input type="number" id="modulusInput" class="w-24 bg-white dark:bg-gray-800 text-gray-800 dark:text-white rounded-md p-1 text-center border border-gray-300 dark:border-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <label for="modulusInput" class="text-sm text-gray-600 dark:text-gray-400 font-bold">Modulus:</label>
+                <input type="number" id="modulusInput" min="2" max="1000000" step="1" class="flex-1 min-w-0 bg-white dark:bg-gray-800 text-gray-800 dark:text-white rounded-md p-1 text-center border border-gray-300 dark:border-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500">
                 <button onclick="setModulus()" class="btn bg-indigo-500 hover:bg-indigo-600 text-white text-sm font-bold py-1 px-3 rounded-md">Set</button>
             </div>
             <div class="flex items-center justify-center gap-2">
-                <label for="scaleInput" class="text-sm text-gray-600 dark:text-gray-400">Scale:</label>
-                <input type="number" id="scaleInput" value="0.95" min="0.5" max="1.5" step="0.1" class="w-24 bg-white dark:bg-gray-800 text-gray-800 dark:text-white rounded-md p-1 text-center border border-gray-300 dark:border-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <label for="scaleInput" class="text-sm text-gray-600 dark:text-gray-400 font-bold">UI scale:</label>
+                <input type="number" id="scaleInput" value="0.95" min="0.5" max="1.5" step="0.1" class="flex-1 bg-white dark:bg-gray-800 text-gray-800 dark:text-white rounded-md p-1 text-center border border-gray-300 dark:border-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500">
                 <button onclick="setScale()" class="btn bg-indigo-500 hover:bg-indigo-600 text-white text-sm font-bold py-1 px-3 rounded-md">Set</button>
             </div>
         </div>
