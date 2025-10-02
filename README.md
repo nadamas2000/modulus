@@ -105,6 +105,8 @@ This project uses a local Tailwind CSS build process to optimize performance. To
     npm run build
     ```
 
+-----
+
 ## 🎁 Extra
 Added PDF with pre-calculated mod 22 for no-calc and no-div playing game.
 **[https://nadamas2000.github.io/modulus/Pre-calc-mod22_pnp.pdf](https://nadamas2000.github.io/modulus/Pre-calc-mod22_pnp.pdf)**
