@@ -49,11 +49,7 @@ function appendNumber(number) {
         return; 
     }
 
-    if (currentInput === '0') {
-        currentInput = number;
-    } else {
-        currentInput += number;
-    }
+    currentInput += number;
     updateDisplay();
 }
 
