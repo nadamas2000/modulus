@@ -49,7 +49,7 @@
                 <button onclick="deleteLast()" class="btn bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500 text-gray-800 dark:text-white text-2xl font-medium rounded-lg p-4 focus:outline-none focus:ring-2 focus:ring-gray-400 h-full">⌫</button>
             </div>
             
-            <!-- Cuadrícula de Números 3x3 -->
+            <!-- Cuadrícula de Números y Operaciones -->
             <div class="grid grid-cols-3 grid-rows-4 gap-4 flex-grow">
                 <button onclick="appendNumber('7')" class="btn bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-2xl font-medium rounded-lg p-4 h-full w-full sm:aspect-square">7</button>
                 <button onclick="appendNumber('8')" class="btn bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-2xl font-medium rounded-lg p-4 h-full w-full sm:aspect-square">8</button>
@@ -60,12 +60,8 @@
                 <button onclick="appendNumber('1')" class="btn bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-2xl font-medium rounded-lg p-4 h-full w-full sm:aspect-square">1</button>
                 <button onclick="appendNumber('2')" class="btn bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-2xl font-medium rounded-lg p-4 h-full w-full sm:aspect-square">2</button>
                 <button onclick="appendNumber('3')" class="btn bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-2xl font-medium rounded-lg p-4 h-full w-full sm:aspect-square">3</button>
-                <button onclick="appendNumber('0')" class="btn col-span-3 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-2xl font-medium rounded-lg p-4 h-full w-full">0</button>
-            </div>
-
-            <!-- Fila de Cálculo -->
-            <div class="h-16 sm:h-auto shrink-0">
-                <button onclick="calculateModulo()" class="btn w-full bg-blue-500 hover:bg-blue-600 text-white text-2xl font-medium rounded-lg p-4 focus:outline-none focus:ring-2 focus:ring-blue-400 h-full">MOD</button>
+                <button onclick="appendNumber('0')" class="btn bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white text-2xl font-medium rounded-lg p-4 h-full w-full sm:aspect-square">0</button>
+                <button onclick="calculateModulo()" class="col-span-2 btn bg-blue-500 hover:bg-blue-600 text-white text-2xl font-medium rounded-lg p-4 focus:outline-none focus:ring-2 focus:ring-blue-400 h-full w-full">MOD</button>
             </div>
         </div>
     </div>
