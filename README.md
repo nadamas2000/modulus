@@ -14,6 +14,9 @@ A simple and elegant web application to calculate the modulus (remainder of a di
   * **Configurable Modulus:**
       * Set a default modulus on page load via a URL parameter.
       * Change the modulus at any time through the in-app settings menu.
+  * **Game Mode Emoticons:** 
+      * When calculating Modulus 22, the app will show emoticons (👍, 👎, ❤️, 💔) based on specific results.
+      * This feature can be turned off via a URL parameter.
   * **Input Validation:**
      * The modulus is restricted to whole numbers between **2** and **1,000,000** to ensure stable calculations.
      * The on-screen number input is limited to **14 digits**.
@@ -38,12 +41,13 @@ You can access the application by clicking the link or scanning the QR code belo
 You can configure the calculator in two ways:
 
   * **Via the URL (on load):**
-    Add the `?num=` parameter to the URL to set a specific modulus. By default, it is `22`.
+    * Add the `?num=` parameter to the URL to set a specific modulus. By default, it is `22`.
+    * Add the `&game=false` or `&game=0` parameter to the URL to disable the game mode emoticons. By default, it is enabled.
 
-    *Example for using modulus 33:*
+    *Example for using modulus 33 with game mode disabled:*
 
     ```
-    https://nadamas2000.github.io/modulus/?num=33
+    https://nadamas2000.github.io/modulus/?num=33&game=false
     ```
 
   * **Via the Interface (at any time):**
