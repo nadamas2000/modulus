@@ -36,9 +36,30 @@ function setModulus() {
     if (!isNaN(newModulus) && newModulus >= MIN_MODULUS && newModulus <= MAX_MODULUS) {
         modulus = newModulus;
         updateTitle();
+        updateGameModeVisibility();
         toggleSettingsMenu();
     } else {
         modulusInput.value = modulus;
+    }
+}
+
+// Función para actualizar la visibilidad del modo de juego
+function updateGameModeVisibility() {
+    const gameModeContainer = document.getElementById('gameModeContainer');
+    if (gameModeContainer) {
+        if (modulus === 22) {
+            gameModeContainer.classList.remove('hidden');
+        } else {
+            gameModeContainer.classList.add('hidden');
+        }
+    }
+}
+
+// Función para alternar el modo de juego
+function toggleGameMode() {
+    const gameModeCheckbox = document.getElementById('gameModeCheckbox');
+    if (gameModeCheckbox) {
+        gameMode = gameModeCheckbox.checked;
     }
 }
 
@@ -201,9 +222,16 @@ window.onload = function() {
     // Sincroniza el valor del módulo con el campo de entrada
     modulusInput.value = modulus;    
     
+    // Actualiza el checkbox del modo de juego
+    const gameModeCheckbox = document.getElementById('gameModeCheckbox');
+    if (gameModeCheckbox) {
+        gameModeCheckbox.checked = gameMode;
+    }
+    
     // Actualiza la UI inicial
     updateDisplay();
     updateTitle();
+    updateGameModeVisibility();
 };
 
 // Función para aplicar la escala a la calculadora
